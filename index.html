@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Département Informatique – EFREI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-inner">
+    <div class="logo-zone">
+      <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-label="Logo EFREI">
+        <rect width="44" height="44" rx="6" fill="#f5c400"/>
+        <text x="22" y="30" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" fill="#003b7a">EFREI</text>
+      </svg>
+      <div class="site-title">Département<br><span>Informatique</span></div>
+    </div>
+ 
+    <button class="menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+ 
+    <nav id="nav-principal" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li class="nav-item">
+          <a href="formations/bachelor.html">Cours &amp; Formation</a>
+          <ul class="sous-menu">
+            <li><a href="formations/bachelor.html">Bachelor Informatique</a></li>
+            <li><a href="formations/admission.html">Modalités d'admission</a></li>
+            <li><a href="formations/cycle-ingenieur.html">Cycle Ingénieur</a></li>
+            <li><a href="formations/agenda.html">Agenda des permanences</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="equipe/annuaire.html">Équipe Enseignante</a>
+          <ul class="sous-menu">
+            <li><a href="equipe/annuaire.html">Annuaire des enseignants</a></li>
+            <li><a href="equipe/laboratoire.html">Laboratoire</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="contact/localisation.html">Contact / À propos</a>
+          <ul class="sous-menu">
+            <li><a href="contact/localisation.html">Localisation &amp; accès</a></li>
+            <li><a href="contact/equipe-administrative.html">Équipe administrative</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+ 
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="conteneur">
+    <h1 class="fade-in">Département <span>Informatique</span><br>de l'EFREI</h1>
+    <p class="fd1">Formez-vous aux métiers du numérique dans un environnement d'excellence,
+       au cœur de la Grande École d'Ingénieurs de Paris Panthéon-Assas.</p>
+    <div class="hero-boutons fd2">
+      <a href="formations/bachelor.html" class="btn btn-primaire">Nos formations</a>
+      <a href="contact/localisation.html" class="btn btn-secondaire">Nous contacter</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===== CARROUSEL ===== -->
+<section style="padding:36px 24px; background:var(--gris-clair);">
+  <div class="conteneur">
+    <div class="carrousel">
+      <div class="carrousel-piste" id="carrousel-piste">
+        <div class="carrousel-diapo">
+          <h3>🎓 Ingénieurs du numérique</h3>
+          <p>Le département Informatique forme des ingénieurs polyvalents, maîtrisant les technologies les plus récentes.</p>
+        </div>
+        <div class="carrousel-diapo">
+          <h3>💻 Projets innovants</h3>
+          <p>Nos étudiants réalisent des projets concrets en partenariat avec des entreprises du CAC 40 et des startups.</p>
+        </div>
+        <div class="carrousel-diapo">
+          <h3>🌍 Ouverture internationale</h3>
+          <p>Profitez d'opportunités à l'international grâce à nos partenariats avec plus de 50 universités mondiales.</p>
+        </div>
+        <div class="carrousel-diapo">
+          <h3>🤝 Réseau Alumni</h3>
+          <p>Rejoignez un réseau de 30 000 anciens étudiants présents dans les plus grandes entreprises technologiques.</p>
+        </div>
+      </div>
+      <button class="carrousel-btn precedent" id="btn-precedent" aria-label="Précédent">&#8249;</button>
+      <button class="carrousel-btn suivant"   id="btn-suivant"   aria-label="Suivant">&#8250;</button>
+    </div>
+    <div class="carrousel-points">
+      <button class="point actif" aria-label="Diapo 1"></button>
+      <button class="point"       aria-label="Diapo 2"></button>
+      <button class="point"       aria-label="Diapo 3"></button>
+      <button class="point"       aria-label="Diapo 4"></button>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===== STATS ===== -->
+<section class="stats-bande">
+  <div class="stats-grille">
+    <div class="stat-item fd1"><h3><span class="compteur" data-cible="1200">0</span>+</h3><p>Étudiants en informatique</p></div>
+    <div class="stat-item fd2"><h3><span class="compteur" data-cible="45">0</span></h3><p>Enseignants-chercheurs</p></div>
+    <div class="stat-item fd3"><h3><span class="compteur" data-cible="8">0</span></h3><p>Spécialisations disponibles</p></div>
+    <div class="stat-item fd4"><h3><span class="compteur" data-cible="95">0</span>%</h3><p>Taux d'insertion pro</p></div>
+  </div>
+</section>
+ 
+<!-- ===== NAVIGATION SOUS-PAGES ===== -->
+<section>
+  <div class="conteneur">
+    <div class="section-titre">
+      <h2>Explorer le département</h2>
+      <div class="trait"></div>
+      <p>Accédez rapidement aux rubriques principales du site.</p>
+    </div>
+ 
+    <div class="grille-cartes">
+      <a href="formations/bachelor.html" class="carte-lien fd1">
+        <div class="icone-lien">🎓</div>
+        <h3>Cours &amp; Formation</h3>
+        <p>Bachelor, Cycle Ingénieur, Modalités d'admission et agenda des permanences.</p>
+        <span class="fleche">→</span>
+      </a>
+      <a href="equipe/annuaire.html" class="carte-lien fd2">
+        <div class="icone-lien">👨‍🏫</div>
+        <h3>Équipe Enseignante</h3>
+        <p>Annuaire des enseignants-chercheurs et présentation du laboratoire de recherche.</p>
+        <span class="fleche">→</span>
+      </a>
+      <a href="contact/localisation.html" class="carte-lien fd3">
+        <div class="icone-lien">📍</div>
+        <h3>Contact &amp; À propos</h3>
+        <p>Localisation, accès au campus et présentation de l'équipe administrative.</p>
+        <span class="fleche">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===== ACTUALITÉS ===== -->
+<section class="fond-gris">
+  <div class="conteneur">
+    <div class="section-titre">
+      <h2>Actualités du département</h2>
+      <div class="trait"></div>
+    </div>
+    <div class="grille-cartes">
+      <article class="carte fd1">
+        <div class="carte-corps">
+          <p style="font-size:.78rem;color:var(--bleu-clair);font-weight:600;">🗓 Avril 2025</p>
+          <h3>Hackathon IA 2025</h3>
+          <p>Nos étudiants remportent le 1er prix du Hackathon Intelligence Artificielle organisé par Tech4Good France.</p>
+        </div>
+      </article>
+      <article class="carte fd2">
+        <div class="carte-corps">
+          <p style="font-size:.78rem;color:var(--bleu-clair);font-weight:600;">🗓 Mars 2025</p>
+          <h3>Nouvelle spécialisation Cybersécurité</h3>
+          <p>Le département lance une nouvelle spécialisation en cybersécurité offensive et défensive dès la rentrée 2025.</p>
+        </div>
+      </article>
+      <article class="carte fd3">
+        <div class="carte-corps">
+          <p style="font-size:.78rem;color:var(--bleu-clair);font-weight:600;">🗓 Février 2025</p>
+          <h3>Forum Entreprises</h3>
+          <p>Plus de 80 entreprises présentes au Forum Métiers Numériques EFREI. Record de participation : 1500 étudiants.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+ 
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h3>EFREI Informatique</h3>
+      <p>Grande École d'Ingénieurs Généralistes et d'Experts du Numérique, membre de l'Université Paris-Panthéon-Assas.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Formations</h3>
+      <ul>
+        <li><a href="formations/bachelor.html">Bachelor Informatique</a></li>
+        <li><a href="formations/admission.html">Modalités d'admission</a></li>
+        <li><a href="formations/cycle-ingenieur.html">Cycle Ingénieur</a></li>
+        <li><a href="formations/agenda.html">Agenda des permanences</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Équipe &amp; Contact</h3>
+      <ul>
+        <li><a href="equipe/annuaire.html">Annuaire enseignants</a></li>
+        <li><a href="equipe/laboratoire.html">Laboratoire</a></li>
+        <li><a href="contact/localisation.html">Localisation</a></li>
+        <li><a href="contact/equipe-administrative.html">Équipe administrative</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Coordonnées</h3>
+      <p>30-32 av. de la République<br>94800 Villejuif<br><br>📞 01 46 77 46 77<br>📧 info@efrei.fr</p>
+    </div>
+  </div>
+  <div class="footer-bas">
+    <p>&copy; 2025 Département Informatique – EFREI. Tous droits réservés.</p>
+    <nav aria-label="Nav secondaire">
+      <a href="contact/equipe-administrative.html" style="color:var(--jaune);">À propos du projet</a>
+    </nav>
+  </div>
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>

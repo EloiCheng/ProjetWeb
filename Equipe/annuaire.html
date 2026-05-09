@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annuaire des Enseignants-Chercheurs – EFREI</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .barre-recherche { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:28px; }
+    .barre-recherche input { flex:1; min-width:200px; padding:11px 15px; border:2px solid #dde3ee; border-radius:8px; font-size:0.9rem; font-family:inherit; outline:none; transition:border-color 0.3s; }
+    .barre-recherche input:focus { border-color:var(--bleu-clair); }
+    .grille-enseignants { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; }
+    .carte-ens { background:var(--blanc); border-radius:var(--radius); box-shadow:var(--ombre); display:flex; gap:16px; padding:20px; transition:transform 0.3s, box-shadow 0.3s; align-items:flex-start; }
+    .carte-ens:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,59,122,0.16); }
+    .av { width:66px; height:66px; min-width:66px; border-radius:50%; background:var(--bleu); color:var(--blanc); font-size:1.4rem; font-weight:700; display:flex; align-items:center; justify-content:center; border:3px solid var(--jaune); }
+    .info h3 { color:var(--bleu); font-size:1rem; margin-bottom:3px; }
+    .info .titre-ens { font-size:0.78rem; color:#888; font-style:italic; margin-bottom:4px; }
+    .info .spec { color:var(--jaune); font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; }
+    .info p { font-size:0.84rem; color:#555; }
+    .info .email { margin-top:6px; font-size:0.82rem; color:var(--bleu-clair); }
+  </style>
+</head>
+<body>
+ 
+<header>
+  <div class="header-inner">
+    <div class="logo-zone">
+      <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-label="Logo EFREI"><rect width="44" height="44" rx="6" fill="#f5c400"/><text x="22" y="30" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" fill="#003b7a">EFREI</text></svg>
+      <div class="site-title">Département<br><span>Informatique</span></div>
+    </div>
+    <button class="menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav id="nav-principal" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li class="nav-item"><a href="../formations/bachelor.html">Cours &amp; Formation</a><ul class="sous-menu"><li><a href="../formations/bachelor.html">Bachelor Informatique</a></li><li><a href="../formations/admission.html">Modalités d'admission</a></li><li><a href="../formations/cycle-ingenieur.html">Cycle Ingénieur</a></li><li><a href="../formations/agenda.html">Agenda des permanences</a></li></ul></li>
+        <li class="nav-item"><a href="annuaire.html">Équipe Enseignante</a><ul class="sous-menu"><li><a href="annuaire.html">Annuaire des enseignants</a></li><li><a href="laboratoire.html">Laboratoire</a></li></ul></li>
+        <li class="nav-item"><a href="../contact/localisation.html">Contact / À propos</a><ul class="sous-menu"><li><a href="../contact/localisation.html">Localisation &amp; accès</a></li><li><a href="../contact/equipe-administrative.html">Équipe administrative</a></li></ul></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+ 
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <div class="conteneur">
+    <a href="../index.html">Accueil</a><span>›</span>
+    <span>Équipe Enseignante</span><span>›</span>
+    <span>Annuaire des enseignants-chercheurs</span>
+  </div>
+</nav>
+ 
+<section class="hero hero-petit">
+  <div class="conteneur">
+    <h1 class="fade-in">Annuaire des <span>Enseignants-Chercheurs</span></h1>
+    <p class="fd1">Retrouvez les coordonnées et spécialités de toute l'équipe pédagogique du département.</p>
+  </div>
+</section>
+ 
+<section>
+  <div class="conteneur">
+    <div class="section-titre">
+      <h2>Notre équipe pédagogique</h2>
+      <div class="trait"></div>
+    </div>
+ 
+    <!-- Recherche JS -->
+    <div class="barre-recherche">
+      <label for="recherche-enseignant" style="font-weight:600;color:var(--bleu);white-space:nowrap;">🔍 Rechercher :</label>
+      <input type="search" id="recherche-enseignant" placeholder="Nom, spécialité, matière…" aria-label="Rechercher un enseignant" />
+    </div>
+ 
+    <!-- Tableau filtrable -->
+    <div class="tableau-conteneur" style="margin-bottom:40px;">
+      <table id="tableau-enseignants">
+        <thead>
+          <tr><th scope="col">Nom</th><th scope="col">Titre</th><th scope="col">Spécialité</th><th scope="col">Email</th><th scope="col">Bureau</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>M. Mohamed Hamidi</td><td>Maître de conférences</td><td>Programmation Web, JavaScript</td><td>m.hamidi@efrei.fr</td><td>B204</td></tr>
+          <tr><td>Mme Claire Dupont</td><td>Professeure des universités</td><td>Algorithmique, Structures de données</td><td>c.dupont@efrei.fr</td><td>A101</td></tr>
+          <tr><td>M. Julien Martin</td><td>Maître de conférences</td><td>Intelligence Artificielle, Machine Learning</td><td>j.martin@efrei.fr</td><td>C305</td></tr>
+          <tr><td>Mme Isabelle Bernard</td><td>Professeure associée</td><td>Cybersécurité, Cryptographie</td><td>i.bernard@efrei.fr</td><td>B102</td></tr>
+          <tr><td>M. Pierre Leclerc</td><td>Maître de conférences</td><td>Bases de données, SQL</td><td>p.leclerc@efrei.fr</td><td>A203</td></tr>
+          <tr><td>Mme Nathalie Simon</td><td>Professeure des universités</td><td>Réseaux, Cloud Computing</td><td>n.simon@efrei.fr</td><td>C201</td></tr>
+          <tr><td>M. François Petit</td><td>Intervenant professionnel</td><td>DevOps, Docker, Kubernetes</td><td>f.petit@efrei.fr</td><td>B301</td></tr>
+          <tr><td>Mme Amina Traoré</td><td>Maître de conférences</td><td>Systèmes d'exploitation, Linux</td><td>a.traore@efrei.fr</td><td>A105</td></tr>
+          <tr><td>M. Karim Benali</td><td>Professeur associé</td><td>Jeux Vidéo, Unity, UE5</td><td>k.benali@efrei.fr</td><td>C401</td></tr>
+          <tr><td>Mme Lucie Moreau</td><td>Maître de conférences</td><td>Bioinformatique, Python</td><td>l.moreau@efrei.fr</td><td>A302</td></tr>
+        </tbody>
+      </table>
+    </div>
+ 
+    <!-- Cartes visuelles -->
+    <div class="grille-enseignants">
+      <div class="carte-ens fd1"><div class="av">MH</div><div class="info"><h3>M. Mohamed Hamidi</h3><p class="titre-ens">Maître de conférences</p><p class="spec">Programmation Web</p><p>Responsable du module TI402 – HTML5, CSS3, JavaScript. Auteur de plusieurs supports pédagogiques sur le développement web.</p><p class="email">📧 m.hamidi@efrei.fr · B204</p></div></div>
+      <div class="carte-ens fd2"><div class="av">CD</div><div class="info"><h3>Mme Claire Dupont</h3><p class="titre-ens">Professeure des universités</p><p class="spec">Algorithmique</p><p>Chercheuse en complexité algorithmique et théorie des graphes. Responsable du module Algorithmique avancée.</p><p class="email">📧 c.dupont@efrei.fr · A101</p></div></div>
+      <div class="carte-ens fd3"><div class="av">JM</div><div class="info"><h3>M. Julien Martin</h3><p class="titre-ens">Maître de conférences</p><p class="spec">Intelligence Artificielle</p><p>Expert en apprentissage automatique et vision par ordinateur. Co-auteur de 12 publications dans des conférences internationales.</p><p class="email">📧 j.martin@efrei.fr · C305</p></div></div>
+      <div class="carte-ens fd4"><div class="av">IB</div><div class="info"><h3>Mme Isabelle Bernard</h3><p class="titre-ens">Professeure associée</p><p class="spec">Cybersécurité</p><p>Ex-experte ANSSI. Spécialiste des systèmes de détection d'intrusion et de la cryptographie appliquée.</p><p class="email">📧 i.bernard@efrei.fr · B102</p></div></div>
+      <div class="carte-ens fd1"><div class="av">PL</div><div class="info"><h3>M. Pierre Leclerc</h3><p class="titre-ens">Maître de conférences</p><p class="spec">Bases de données</p><p>Expert SQL et NoSQL. Auteur de plusieurs publications sur l'optimisation des requêtes et les bases de données distribuées.</p><p class="email">📧 p.leclerc@efrei.fr · A203</p></div></div>
+      <div class="carte-ens fd2"><div class="av">NS</div><div class="info"><h3>Mme Nathalie Simon</h3><p class="titre-ens">Professeure des universités</p><p class="spec">Réseaux &amp; Cloud</p><p>Chercheuse en architectures distribuées. Responsable des modules Réseaux et Cloud Computing du cycle ingénieur.</p><p class="email">📧 n.simon@efrei.fr · C201</p></div></div>
+    </div>
+  </div>
+</section>
+ 
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col"><h3>EFREI Informatique</h3><p>Grande École d'Ingénieurs du Numérique, membre de l'Université Paris-Panthéon-Assas.</p></div>
+    <div class="footer-col"><h3>Formations</h3><ul><li><a href="../formations/bachelor.html">Bachelor Informatique</a></li><li><a href="../formations/admission.html">Modalités d'admission</a></li><li><a href="../formations/cycle-ingenieur.html">Cycle Ingénieur</a></li><li><a href="../formations/agenda.html">Agenda des permanences</a></li></ul></div>
+    <div class="footer-col"><h3>Équipe &amp; Contact</h3><ul><li><a href="annuaire.html">Annuaire enseignants</a></li><li><a href="laboratoire.html">Laboratoire</a></li><li><a href="../contact/localisation.html">Localisation</a></li><li><a href="../contact/equipe-administrative.html">Équipe administrative</a></li></ul></div>
+    <div class="footer-col"><h3>Coordonnées</h3><p>30-32 av. de la République<br>94800 Villejuif<br><br>📞 01 46 77 46 77<br>📧 info@efrei.fr</p></div>
+  </div>
+  <div class="footer-bas">
+    <p>&copy; 2025 Département Informatique – EFREI. Tous droits réservés.</p>
+    <nav aria-label="Nav secondaire"><a href="../contact/equipe-administrative.html" style="color:var(--jaune);">À propos du projet</a></nav>
+  </div>
+</footer>
+<script src="../script.js"></script>
+</body>
+</html>

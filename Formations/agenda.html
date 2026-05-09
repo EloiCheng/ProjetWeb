@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda des Permanences – EFREI</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .filtres { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
+    .filtre-btn {
+      padding:8px 18px; border:2px solid #dde3ee; border-radius:20px;
+      background:none; cursor:pointer; font-size:0.85rem; font-weight:600;
+      color:var(--bleu); transition:all 0.25s;
+    }
+    .filtre-btn:hover, .filtre-btn.actif { background:var(--bleu); color:var(--blanc); border-color:var(--bleu); }
+    .grille-agenda { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
+    .agenda-card {
+      background:var(--blanc); border-radius:var(--radius); box-shadow:var(--ombre);
+      padding:20px; border-left:4px solid var(--bleu);
+    }
+    .agenda-card.lundi   { border-left-color:#3b82f6; }
+    .agenda-card.mardi   { border-left-color:#10b981; }
+    .agenda-card.mercredi{ border-left-color:#f59e0b; }
+    .agenda-card.jeudi   { border-left-color:#8b5cf6; }
+    .agenda-card.vendredi{ border-left-color:#ef4444; }
+    .agenda-card .jour-badge {
+      display:inline-block; padding:3px 10px; border-radius:20px;
+      font-size:0.75rem; font-weight:700; margin-bottom:10px;
+      text-transform:uppercase; letter-spacing:0.06em;
+    }
+    .lundi    .jour-badge { background:#dbeafe; color:#1e40af; }
+    .mardi    .jour-badge { background:#d1fae5; color:#065f46; }
+    .mercredi .jour-badge { background:#fef3c7; color:#92400e; }
+    .jeudi    .jour-badge { background:#ede9fe; color:#5b21b6; }
+    .vendredi .jour-badge { background:#fee2e2; color:#991b1b; }
+    .agenda-card h3 { font-size:1rem; color:var(--bleu); margin-bottom:4px; }
+    .agenda-card .matiere { font-size:0.82rem; color:#666; margin-bottom:8px; }
+    .agenda-card .horaire { font-size:0.9rem; font-weight:600; color:var(--gris-texte); }
+    .agenda-card .salle   { font-size:0.82rem; color:#888; margin-top:4px; }
+    .agenda-card[style*="none"] { display:none; }
+  </style>
+</head>
+<body>
+ 
+<header>
+  <div class="header-inner">
+    <div class="logo-zone">
+      <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-label="Logo EFREI"><rect width="44" height="44" rx="6" fill="#f5c400"/><text x="22" y="30" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" fill="#003b7a">EFREI</text></svg>
+      <div class="site-title">Département<br><span>Informatique</span></div>
+    </div>
+    <button class="menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav id="nav-principal" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li class="nav-item"><a href="bachelor.html">Cours &amp; Formation</a><ul class="sous-menu"><li><a href="bachelor.html">Bachelor Informatique</a></li><li><a href="admission.html">Modalités d'admission</a></li><li><a href="cycle-ingenieur.html">Cycle Ingénieur</a></li><li><a href="agenda.html">Agenda des permanences</a></li></ul></li>
+        <li class="nav-item"><a href="../equipe/annuaire.html">Équipe Enseignante</a><ul class="sous-menu"><li><a href="../equipe/annuaire.html">Annuaire des enseignants</a></li><li><a href="../equipe/laboratoire.html">Laboratoire</a></li></ul></li>
+        <li class="nav-item"><a href="../contact/localisation.html">Contact / À propos</a><ul class="sous-menu"><li><a href="../contact/localisation.html">Localisation &amp; accès</a></li><li><a href="../contact/equipe-administrative.html">Équipe administrative</a></li></ul></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+ 
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <div class="conteneur">
+    <a href="../index.html">Accueil</a><span>›</span>
+    <a href="bachelor.html">Cours &amp; Formation</a><span>›</span>
+    <span>Agenda des permanences</span>
+  </div>
+</nav>
+ 
+<section class="hero hero-petit">
+  <div class="conteneur">
+    <h1 class="fade-in">Agenda des <span>Permanences</span></h1>
+    <p class="fd1">Consultez les horaires de permanence de l'équipe enseignante pour la semaine en cours.</p>
+  </div>
+</section>
+ 
+<section>
+  <div class="conteneur">
+    <div class="section-titre">
+      <h2>Semaine du 5 au 9 mai 2025</h2>
+      <div class="trait"></div>
+      <p>Filtrez par jour pour trouver rapidement une permanence.</p>
+    </div>
+ 
+    <!-- Filtres par jour (JavaScript) -->
+    <div class="filtres" id="filtres-jours">
+      <button class="filtre-btn actif" data-jour="tous">Tous les jours</button>
+      <button class="filtre-btn" data-jour="lundi">Lundi</button>
+      <button class="filtre-btn" data-jour="mardi">Mardi</button>
+      <button class="filtre-btn" data-jour="mercredi">Mercredi</button>
+      <button class="filtre-btn" data-jour="jeudi">Jeudi</button>
+      <button class="filtre-btn" data-jour="vendredi">Vendredi</button>
+    </div>
+ 
+    <div class="grille-agenda" id="grille-agenda">
+      <div class="agenda-card lundi">
+        <span class="jour-badge">Lundi</span>
+        <h3>M. Mohamed Hamidi</h3>
+        <p class="matiere">📚 Programmation Web (TI402)</p>
+        <p class="horaire">🕐 14h00 – 16h00</p>
+        <p class="salle">📍 Salle B204</p>
+      </div>
+      <div class="agenda-card lundi">
+        <span class="jour-badge">Lundi</span>
+        <h3>Mme Claire Dupont</h3>
+        <p class="matiere">📚 Algorithmique</p>
+        <p class="horaire">🕐 09h00 – 11h00</p>
+        <p class="salle">📍 Salle A101</p>
+      </div>
+      <div class="agenda-card mardi">
+        <span class="jour-badge">Mardi</span>
+        <h3>M. Pierre Leclerc</h3>
+        <p class="matiere">📚 Bases de données</p>
+        <p class="horaire">🕐 10h00 – 12h00</p>
+        <p class="salle">📍 Salle A203</p>
+      </div>
+      <div class="agenda-card mardi">
+        <span class="jour-badge">Mardi</span>
+        <h3>Mme Amina Traoré</h3>
+        <p class="matiere">📚 Systèmes d'exploitation</p>
+        <p class="horaire">🕐 14h00 – 16h00</p>
+        <p class="salle">📍 Salle A105</p>
+      </div>
+      <div class="agenda-card mercredi">
+        <span class="jour-badge">Mercredi</span>
+        <h3>M. Julien Martin</h3>
+        <p class="matiere">📚 Intelligence Artificielle</p>
+        <p class="horaire">🕐 09h00 – 11h00</p>
+        <p class="salle">📍 Salle C305</p>
+      </div>
+      <div class="agenda-card mercredi">
+        <span class="jour-badge">Mercredi</span>
+        <h3>M. François Petit</h3>
+        <p class="matiere">📚 DevOps &amp; Cloud</p>
+        <p class="horaire">🕐 13h00 – 15h00</p>
+        <p class="salle">📍 Salle B301</p>
+      </div>
+      <div class="agenda-card jeudi">
+        <span class="jour-badge">Jeudi</span>
+        <h3>Mme Isabelle Bernard</h3>
+        <p class="matiere">📚 Cybersécurité</p>
+        <p class="horaire">🕐 13h00 – 15h00</p>
+        <p class="salle">📍 Salle B102</p>
+      </div>
+      <div class="agenda-card jeudi">
+        <span class="jour-badge">Jeudi</span>
+        <h3>Mme Claire Dupont</h3>
+        <p class="matiere">📚 Algorithmique avancée</p>
+        <p class="horaire">🕐 10h00 – 12h00</p>
+        <p class="salle">📍 Salle A101</p>
+      </div>
+      <div class="agenda-card vendredi">
+        <span class="jour-badge">Vendredi</span>
+        <h3>Mme Nathalie Simon</h3>
+        <p class="matiere">📚 Réseaux informatiques</p>
+        <p class="horaire">🕐 11h00 – 13h00</p>
+        <p class="salle">📍 Salle C201</p>
+      </div>
+      <div class="agenda-card vendredi">
+        <span class="jour-badge">Vendredi</span>
+        <h3>M. Mohamed Hamidi</h3>
+        <p class="matiere">📚 Projet Web TI402</p>
+        <p class="horaire">🕐 14h00 – 16h00</p>
+        <p class="salle">📍 Salle B204</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- Info pratique -->
+<section class="fond-gris">
+  <div class="conteneur">
+    <div class="section-titre">
+      <h2>Informations pratiques</h2>
+      <div class="trait"></div>
+    </div>
+    <div class="grille-cartes">
+      <div class="carte fd1"><div class="carte-entete">📧</div><div class="carte-corps"><h3>Prendre rendez-vous</h3><p>Pour une permanence spécifique, contactez directement l'enseignant par email ou via le portail étudiant.</p></div></div>
+      <div class="carte fd2"><div class="carte-entete">📋</div><div class="carte-corps"><h3>Règles des permanences</h3><p>Les permanences sont ouvertes à tous les étudiants du département, sans réservation. Durée max : 20 min par étudiant.</p></div></div>
+      <div class="carte fd3"><div class="carte-entete">🔄</div><div class="carte-corps"><h3>Mises à jour</h3><p>L'agenda est mis à jour chaque lundi matin. En cas d'annulation, un email est envoyé aux étudiants concernés.</p></div></div>
+    </div>
+  </div>
+</section>
+ 
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col"><h3>EFREI Informatique</h3><p>Grande École d'Ingénieurs du Numérique, membre de l'Université Paris-Panthéon-Assas.</p></div>
+    <div class="footer-col"><h3>Formations</h3><ul><li><a href="bachelor.html">Bachelor Informatique</a></li><li><a href="admission.html">Modalités d'admission</a></li><li><a href="cycle-ingenieur.html">Cycle Ingénieur</a></li><li><a href="agenda.html">Agenda des permanences</a></li></ul></div>
+    <div class="footer-col"><h3>Équipe &amp; Contact</h3><ul><li><a href="../equipe/annuaire.html">Annuaire enseignants</a></li><li><a href="../equipe/laboratoire.html">Laboratoire</a></li><li><a href="../contact/localisation.html">Localisation</a></li><li><a href="../contact/equipe-administrative.html">Équipe administrative</a></li></ul></div>
+    <div class="footer-col"><h3>Coordonnées</h3><p>30-32 av. de la République<br>94800 Villejuif<br><br>📞 01 46 77 46 77<br>📧 info@efrei.fr</p></div>
+  </div>
+  <div class="footer-bas">
+    <p>&copy; 2025 Département Informatique – EFREI. Tous droits réservés.</p>
+    <nav aria-label="Nav secondaire"><a href="../contact/equipe-administrative.html" style="color:var(--jaune);">À propos du projet</a></nav>
+  </div>
+</footer>
+ 
+<script src="../script.js"></script>
+<script>
+  /* Filtrage par jour — spécifique à cette page */
+  document.addEventListener('DOMContentLoaded', function () {
+    const btnsFiltres = document.querySelectorAll('.filtre-btn');
+    const cards = document.querySelectorAll('.agenda-card');
+ 
+    btnsFiltres.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const jour = btn.getAttribute('data-jour');
+ 
+        btnsFiltres.forEach(function (b) { b.classList.remove('actif'); });
+        btn.classList.add('actif');
+ 
+        cards.forEach(function (card) {
+          if (jour === 'tous' || card.classList.contains(jour)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratoire de Recherche – EFREI</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+ 
+<header>
+  <div class="header-inner">
+    <div class="logo-zone">
+      <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-label="Logo EFREI"><rect width="44" height="44" rx="6" fill="#f5c400"/><text x="22" y="30" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" fill="#003b7a">EFREI</text></svg>
+      <div class="site-title">Département<br><span>Informatique</span></div>
+    </div>
+    <button class="menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav id="nav-principal" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li class="nav-item"><a href="../formations/bachelor.html">Cours &amp; Formation</a><ul class="sous-menu"><li><a href="../formations/bachelor.html">Bachelor Informatique</a></li><li><a href="../formations/admission.html">Modalités d'admission</a></li><li><a href="../formations/cycle-ingenieur.html">Cycle Ingénieur</a></li><li><a href="../formations/agenda.html">Agenda des permanences</a></li></ul></li>
+        <li class="nav-item"><a href="annuaire.html">Équipe Enseignante</a><ul class="sous-menu"><li><a href="annuaire.html">Annuaire des enseignants</a></li><li><a href="laboratoire.html">Laboratoire</a></li></ul></li>
+        <li class="nav-item"><a href="../contact/localisation.html">Contact / À propos</a><ul class="sous-menu"><li><a href="../contact/localisation.html">Localisation &amp; accès</a></li><li><a href="../contact/equipe-administrative.html">Équipe administrative</a></li></ul></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+ 
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <div class="conteneur">
+    <a href="../index.html">Accueil</a><span>›</span>
+    <a href="annuaire.html">Équipe Enseignante</a><span>›</span>
+    <span>Laboratoire</span>
+  </div>
+</nav>
+ 
+<section class="hero hero-petit">
+  <div class="conteneur">
+    <h1 class="fade-in">Laboratoire <span>LIEFREI</span></h1>
+    <p class="fd1">Laboratoire d'Informatique et d'Engineering de l'EFREI – Recherche de pointe en IA, cybersécurité et systèmes distribués.</p>
+  </div>
+</section>
+ 
+<section class="stats-bande">
+  <div class="stats-grille">
+    <div class="stat-item fd1"><h3><span class="compteur" data-cible="45">0</span></h3><p>Chercheurs permanents</p></div>
+    <div class="stat-item fd2"><h3><span class="compteur" data-cible="120">0</span></h3><p>Publications (5 dernières années)</p></div>
+    <div class="stat-item fd3"><h3><span class="compteur" data-cible="8">0</span></h3><p>Projets ANR en cours</p></div>
+    <div class="stat-item fd4"><h3><span class="compteur" data-cible="2">0</span>M€</h3><p>Budget de recherche annuel</p></div>
+  </div>
+</section>
+ 
+<section>
+  <div class="conteneur">
+    <div class="section-titre">
+      <h2>Axes de recherche</h2>
+      <div class="trait"></div>
+    </div>
+    <div class="grille-cartes">
+      <div class="carte fd1"><div class="carte-entete">🤖</div><div class="carte-corps"><h3>Intelligence Artificielle &amp; Données</h3><p>Apprentissage automatique, deep learning, traitement du langage naturel et analyse de données massives.</p></div></div>
+      <div class="carte fd2"><div class="carte-entete">🔐</div><div class="carte-corps"><h3>Sécurité des Systèmes</h3><p>Cryptographie post-quantique, détection d'intrusion, sécurité des objets connectés et vie privée numérique.</p></div></div>
+      <div class="carte fd3"><div class="carte-entete">☁️</div><div class="carte-corps"><h3>Systèmes Distribués &amp; Cloud</h3><p>Orchestration de containers, edge computing, architectures cloud-native et tolérance aux pannes.</p></div></div>
+      <div class="carte fd4"><div class="carte-entete">📡</div><div class="carte-corps"><h3>Réseaux &amp; IoT</h3><p>Protocoles de communication pour l'IoT, réseaux 5G/6G, qualité de service et optimisation réseau.</p></div></div>
+    </div>
+  </div>
+</section>
+ 
+<section class="fond-gris">
+  <div class="conteneur">
+    <div class="section-titre">
+      <h2>Publications récentes</h2>
+      <div class="trait"></div>
+    </div>
+    <div class="tableau-conteneur">
+      <table>
+        <thead>
+          <tr><th scope="col">Titre</th><th scope="col">Auteurs</th><th scope="col">Conférence / Revue</th><th scope="col">Année</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Adversarial Robustness in Deep Neural Networks for Edge Computing</td><td>Martin J., Dupont C.</td><td>NeurIPS 2024</td><td>2024</td></tr>
+          <tr><td>Post-Quantum Cryptography for IoT Constrained Devices</td><td>Bernard I., Leclerc P.</td><td>IEEE S&amp;P 2024</td><td>2024</td></tr>
+          <tr><td>Efficient Query Optimization in Distributed NoSQL Environments</td><td>Leclerc P., Simon N.</td><td>VLDB 2023</td><td>2023</td></tr>
+          <tr><td>Federated Learning with Differential Privacy Guarantees</td><td>Martin J., Traoré A.</td><td>ICML 2023</td><td>2023</td></tr>
+          <tr><td>Container Orchestration at Scale: Lessons from Production</td><td>Simon N., Petit F.</td><td>EuroSys 2023</td><td>2023</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+ 
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col"><h3>EFREI Informatique</h3><p>Grande École d'Ingénieurs du Numérique, membre de l'Université Paris-Panthéon-Assas.</p></div>
+    <div class="footer-col"><h3>Formations</h3><ul><li><a href="../formations/bachelor.html">Bachelor Informatique</a></li><li><a href="../formations/admission.html">Modalités d'admission</a></li><li><a href="../formations/cycle-ingenieur.html">Cycle Ingénieur</a></li><li><a href="../formations/agenda.html">Agenda des permanences</a></li></ul></div>
+    <div class="footer-col"><h3>Équipe &amp; Contact</h3><ul><li><a href="annuaire.html">Annuaire enseignants</a></li><li><a href="laboratoire.html">Laboratoire</a></li><li><a href="../contact/localisation.html">Localisation</a></li><li><a href="../contact/equipe-administrative.html">Équipe administrative</a></li></ul></div>
+    <div class="footer-col"><h3>Coordonnées</h3><p>30-32 av. de la République<br>94800 Villejuif<br><br>📞 01 46 77 46 77<br>📧 info@efrei.fr</p></div>
+  </div>
+  <div class="footer-bas">
+    <p>&copy; 2025 Département Informatique – EFREI. Tous droits réservés.</p>
+    <nav aria-label="Nav secondaire"><a href="../contact/equipe-administrative.html" style="color:var(--jaune);">À propos du projet</a></nav>
+  </div>
+</footer>
+<script src="../script.js"></script>
+</body>
+</html>
