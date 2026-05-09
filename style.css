@@ -149,12 +149,16 @@ section { padding:64px 24px; }
  
 /* HERO */
 .hero {
-  background:linear-gradient(135deg,var(--bleu) 0%,var(--bleu-clair) 100%);
-  color:var(--blanc);
-  padding:80px 24px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+  background: linear-gradient(
+    rgba(0, 59, 122, 0.65),
+    rgba(0, 59, 122, 0.65)
+  ),
+  url('Image/campus-8304-2048x1356.webp') center/cover no-repeat;
+  color: var(--blanc);
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 .hero::before {
   content:''; position:absolute; top:-40%; right:-15%;
@@ -167,6 +171,12 @@ section { padding:64px 24px; }
 .hero p { font-size:1.05rem; opacity:0.9; max-width:580px; margin:0 auto 28px; }
 .hero-boutons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
  
+.logo-efrei {
+  height: 42px;
+  width: auto;
+  /* Le logo EFREI est sur fond bleu, on le rend blanc */
+  filter: brightness(0) invert(1);
+}
 /* BOUTONS */
 .btn { display:inline-block; padding:11px 26px; border-radius:var(--radius); font-weight:600; font-size:0.92rem; cursor:pointer; transition:all var(--transition); border:none; }
 .btn-primaire { background:var(--jaune); color:var(--bleu); }
